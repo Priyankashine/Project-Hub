@@ -3,104 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💡 Project Feed | Project Hub</title>
+    <title>🔒 Login | Project Hub</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-    <header>
-        <h1>Project Hub 🚀</h1>
-        <nav>
-            <ul>
-               <li><a href="feed.html">Home</a></li>
-                <li><a href="my.projects.html">All Projects</a></li>
-                <li><a href="submit.html">Submit Project</a></li>
-                <li><a href="dashboard.html">My Dashboard</a></li>
+    </head>
+<body class="auth-page">
+    <main class="auth-container">
+        <div class="auth-box">
+            <h2>Welcome Back to Project Hub</h2>
+            <form id="login-form" action="#" method="POST">
                 
-            </ul>
-        </nav>
-    </header>
+                <label for="user-email">Email Address</label>
+                <input type="email" id="user-email" name="email" required placeholder="your.email@college.edu">
 
-    <main class="feed-layout">
-        
-        <aside class="sidebar-left">
-            <h3>🔍 Search Projects</h3>
-            <form id="global-search">
-                <input type="text" placeholder="Search by Project, Skill, or User..." name="query" required>
-                <button type="submit">Search</button>
+                <label for="user-password">Password</label>
+                <input type="password" id="user-password" name="password" required placeholder="••••••••">
+
+                <label for="user-role">I am a:</label>
+                <select id="user-role" name="role" required>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                </select>
+
+                <button type="submit" class="primary-btn">Log In</button>
             </form>
-            
-            <h3 class="mt-4">🔥 Suggested Categories</h3>
-            <ul class="tag-list">
-                <li><a href="#">#AI_Research</a></li>
-                <li><a href="#">#Web_3.0</a></li>
-                <li><a href="#">#Mobile_App</a></li>
-                <li><a href="#">#Data_Viz</a></li>
-                </ul>
-        </aside>
-
-        <section id="project-feed">
-            <h2>Suggested Projects for You</h2>
-
-            <article class="feed-card">
-                <div class="card-header">
-                    <h3>Decentralized File Storage (Web Dev)</h3>
-                    <p>Posted by: **Alex B. (Student)**</p>
-                </div>
-                
-                <div class="project-summary">
-                    <p class="description">A secure, blockchain-based file storage solution for campus documents, aimed at reducing reliance on central servers.</p>
-                    <p class="details-tags">**Tech Stack:** Solidity, React, IPFS | **Status:** Beta V1</p>
-                </div>
-
-                <div class="project-action-area">
-                    <div class="project-preview">
-                        
-                        <p>Code Snapshot / Demo Video Placeholder</p>
-                    </div>
-                    <button class="primary-btn">▶️ Open & Run Project Demo</button>
-                    <a href="#" class="github-link">View Source Code (Faculty Access)</a>
-                </div>
-
-                <div class="feedback-area">
-                    <textarea placeholder="Share your feedback, bug reports, or suggestions here..."></textarea>
-                    <button class="small-btn">Submit Feedback</button>
-                    <p class="feedback-count">14 pieces of feedback received.</p>
-                </div>
-            </article>
-
-            <article class="feed-card">
-                <div class="card-header">
-                    <h3>AI Campus Chatbot (AI/ML)</h3>
-                    <p>Posted by: **Dr. Chen (Faculty)**</p>
-                </div>
-                
-                <div class="project-summary">
-                    <p class="description">A Natural Language Processing model trained on the college's syllabus and FAQ documents to instantly answer student queries.</p>
-                    <p class="details-tags">**Tech Stack:** Python, TensorFlow, Azure Bot Services | **Status:** V2 Development</p>
-                </div>
-
-                <div class="project-action-area">
-                    <div class="project-preview">
-                        <p>Live Demo Interface Placeholder</p>
-                    </div>
-                    <button class="primary-btn">▶️ Open & Run Project Demo</button>
-                </div>
-
-                <div class="feedback-area">
-                    <textarea placeholder="Share your feedback, bug reports, or suggestions here..."></textarea>
-                    <button class="small-btn">Submit Feedback</button>
-                    <p class="feedback-count">1 feedback received.</p>
-                </div>
-            </article>
-            
-            </section>
-
+            <p class="auth-switch">Don't have an account? <a href="register.html">Create Account</a></p>
+        </div>
     </main>
-
-    <footer>
-        <p>&copy; 2025 College Project Hub. Built for Collaboration.</p>
-    </footer>
     <script src="script.js"></script>
 </body>
 </html>
