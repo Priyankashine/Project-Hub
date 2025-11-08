@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>➕ Submit Project | Project Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+
+    <header>
+        <h1>Project Hub 🚀</h1>
+        <nav>
+            <ul>
+               <li><a href="feed.html">Home</a></li>
+                <li><a href="my.projects.html">All Projects</a></li>
+                <li><a href="submit.html">Submit Project</a></li>
+                <li><a href="dashboard.html">My Dashboard</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h2>Propose a New Project Idea</h2>
+            <p>Fill out the details below to find teammates and officially register your project.</p>
+        </section>
+
+        <section id="submission-form-container">
+            <form action="#" method="POST" id="project-submission-form">
+                
+                <label for="project-title">Project Title **</label>
+                <input type="text" id="project-title" name="title" required placeholder="e.g., Blockchain Voting System">
+
+                <label for="project-category">Project Category **</label>
+                <select id="project-category" name="category" required>
+                    <option value="">Select a Category</option>
+                    <option value="ai-ml">AI/Machine Learning</option>
+                    <option value="web-dev">Web Development</option>
+                    <option value="mobile-dev">Mobile App Development</option>
+                    <option value="data-science">Data Science</option>
+                    <option value="hardware">Hardware/IoT</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="short-desc">Short Description (Max 150 characters) **</label>
+                <input type="text" id="short-desc" name="short_description" maxlength="150" required placeholder="A brief, engaging summary.">
+
+                <label for="full-proposal">Full Proposal / Detailed Scope **</label>
+                <textarea id="full-proposal" name="full_proposal" rows="8" required placeholder="Describe the problem you are solving, the technologies you plan to use, and the expected deliverables."></textarea>
+
+                <label for="team-needed">Team Members Needed (excluding you)</label>
+                <input type="number" id="team-needed" name="team_needed" min="1" max="5" value="3">
+                
+                <label for="required-skills">Required Skills (Comma-separated)</label>
+                <input type="text" id="required-skills" name="required_skills" placeholder="e.g., Python, React, Database Management, UI/UX">
+
+                <button type="submit">Submit Project Proposal</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 College Project Hub. Built for Collaboration.</p>
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+</html>

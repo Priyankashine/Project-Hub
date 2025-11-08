@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🗂️ My Projects | Project Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+
+    <header>
+        <h1>Project Hub 🚀</h1>
+        <nav>
+            <ul>
+                <li><a href="feed.html">Home</a></li>
+                <li><a href="my.projects.html">All Projects</a></li>
+                <li><a href="submit.html">Submit Project</a></li>
+                <li><a href="dashboard.html">My Dashboard</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard-layout">
+        
+        <section class="page-header">
+            <h2>Your Project Portfolio</h2>
+            <p>Manage projects you lead, collaborations you've joined, and invitations.</p>
+            <a href="submit.html" class="primary-btn mt-4">➕ Start a New Project</a>
+        </section>
+
+        <section id="owned-projects">
+            <h3>Projects You Are Leading (3)</h3>
+            
+            <article class="project-management-card">
+                <div class="card-details">
+                    <h4>1. Blockchain Voting System</h4>
+                    <p>Status: **Seeking Collaborators** | Created: 2 months ago</p>
+                    <p class="tech-stack">**Team Size:** 1/4 | **Required:** Solidity, Front-end</p>
+                </div>
+                
+                <div class="card-actions">
+                    <button class="small-btn edit-btn">Edit Details</button>
+                    <button class="small-btn invite-btn">Invite Collaborators</button>
+                    <button class="small-btn faculty-access-btn">View Code Access Link</button>
+                </div>
+                
+                <div class="invite-section">
+                    <h5>Invite New Team Member</h5>
+                    <input type="email" placeholder="Enter college email to invite...">
+                    <button class="tiny-btn">Send Invitation</button>
+                </div>
+
+                <div class="team-status-section">
+                    <h5>Team Requests (1 Pending)</h5>
+                    <p>Student Mark Johnson wants to join as a Front-end Developer.</p>
+                    <button class="tiny-btn approve-btn">Approve</button>
+                    <button class="tiny-btn decline-btn">Decline</button>
+                </div>
+            </article>
+            
+            </section>
+
+        <section id="collab-projects">
+            <h3>Projects You've Joined (1)</h3>
+            
+            <article class="project-management-card collab-card">
+                <div class="card-details">
+                    <h4>Campus Ride Share App</h4>
+                    <p>Role: **Mobile Developer** | Team Lead: Jane Doe</p>
+                    <p class="tech-stack">**Status:** In Progress | **Your Contribution:** Module 3</p>
+                </div>
+                
+                <div class="card-actions">
+                    <button class="small-btn view-btn">View Code/Files</button>
+                    <button class="small-btn leave-btn">Leave Project</button>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 College Project Hub. Built for Collaboration.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

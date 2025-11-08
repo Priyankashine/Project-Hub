@@ -1,0 +1,809 @@
+
+/* 1. :root (Color Palette) */
+:root {
+    --bg-primary: #0f172a;      /* Darkest Blue (Main Sidebar) */
+    --bg-secondary: #1e293b;    /* Dark Blue (Page Background) */
+    --bg-card: #334155;         /* Lighter Blue (Cards) */
+    --bg-hover: #475569;        /* Hover/Muted */
+    --accent-primary: #38bdf8;  /* Bright Blue (Buttons, Links) */
+    --text-primary: #f1f5f9;    /* White/Light Gray (Main Text) */
+    --text-secondary: #94a3b8;  /* Muted Gray (Sub-text) */
+    --border-color: #334155;    /* Border color */
+    
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --card-radius: 12px;
+    --main-sidebar-width: 240px;
+}
+
+/* 2. Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text-primary);
+}
+
+a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 3. Vertical Navigation (The 'Fixed' Header) */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--main-sidebar-width);
+    height: 100vh;
+    background-color: var(--bg-primary);
+    padding: 2rem 1.5rem;
+    border-right: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    
+    /* For scrolling if links overflow */
+    overflow-y: auto;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+header h1 {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+header nav {
+    flex-grow: 1; /* Pushes logout to the bottom */
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column; /* This is the key change! */
+    gap: 0.5rem;
+}
+
+header nav ul li a {
+    display: block; /* Makes the whole area clickable */
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.2s ease-in-out;
+}
+
+header nav ul li a:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+/* Special style for the "Logout" link */
+header nav ul li:last-child {
+    margin-top: auto; /* Pushes this item to the bottom */
+}
+header nav ul li:last-child a {
+    color: #f77171; /* Reddish color for contrast */
+}
+header nav ul li:last-child a:hover {
+    background-color: #f77171;
+    color: var(--text-primary);
+}
+
+
+/* 4. Main Content Layout */
+main, footer {
+    /* Pushes content over to make room for the fixed sidebar */
+    margin-left: var(--main-sidebar-width);
+    padding: 2rem;
+}
+
+.feed-layout {
+    display: grid;
+    /* This creates a 2-column grid within the main area */
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start; /* Aligns items to the top */
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+/* 5. Project Feed & Cards */
+#project-feed h2 {
+    font-size: 1.75rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.feed-card {
+    background-color: var(--bg-card);
+    border-radius: var(--card-radius);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensures borders are clean */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feed-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--bg-secondary);
+}
+
+.card-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+}
+.card-header p {
+    margin: 0.25rem 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.project-summary {
+    padding: 1.5rem;
+}
+
+.description {
+    margin-bottom: 1rem;
+}
+.details-tags {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.details-tags strong {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.project-action-area {
+    padding: 0 1.5rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.project-preview {
+    flex-basis: 100%;
+    height: 180px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    color: var(--text-secondary);
+    font-style: italic;
+    border: 2px dashed var(--bg-hover);
+}
+
+.github-link {
+    font-size: 0.9rem;
+    margin-left: auto;
+}
+
+.feedback-area {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-top: 1px solid var(--bg-primary);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.feedback-count {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+    margin-left: auto;
+}
+
+/* 6. Sidebar & Forms */
+.sidebar-left {
+    background-color: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: var(--card-radius);
+    /* Makes the sidebar sticky within its grid column */
+    position: sticky;
+    top: 2rem;
+}
+
+.mt-4 {
+    margin-top: 1.5rem; /* Utility class from your HTML */
+}
+
+/* General Form Styling */
+input[type="text"],
+textarea {
+    width: 100%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--bg-hover);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* General Button Styling */
+button {
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: var(--accent-primary);
+    color: var(--bg-primary);
+}
+
+button[type="submit"]:hover {
+    filter: brightness(1.1);
+}
+
+/* Specific Button Classes */
+button.primary-btn {
+    background-color: var(--accent-primary);
+    color: var(--bg-primary);
+}
+button.primary-btn:hover {
+    filter: brightness(1.1);
+}
+
+button.small-btn {
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+button.small-btn:hover {
+    background-color: var(--text-secondary);
+}
+
+.tag-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.tag-list a {
+    background: var(--bg-hover);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+.tag-list a:hover {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    text-decoration: none;
+}
+
+
+/* 7. Responsive Design */
+
+/* For Tablets and smaller desktops */
+@media (max-width: 1200px) {
+    .feed-layout {
+        /* Stacks the sidebar on top of the feed */
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar-left {
+        /* Un-stick the sidebar */
+        position: static;
+    }
+}
+
+/* For Mobile devices */
+@media (max-width: 768px) {
+    :root {
+        --main-sidebar-width: 0; /* Hide the sidebar */
+    }
+
+    header {
+        /* Make the header a normal top-bar on mobile */
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    header nav {
+        flex-grow: 0;
+    }
+    header nav ul {
+        /* Change nav back to horizontal for mobile */
+        flex-direction: row;
+        flex-wrap: wrap; /* Allows links to stack if needed */
+        justify-content: center;
+    }
+    header nav ul li:last-child {
+        margin-top: 0; /* Reset margin */
+    }
+    header nav ul li a {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    main, footer {
+        /* Remove the margin, as the sidebar is gone */
+        margin-left: 0;
+        padding: 1rem;
+    }
+    
+    .feed-layout {
+        padding: 0;
+    }
+}
+/*
+--- 8. Dashboard Page Styles ---
+(Add this to the end of your existing styles.css)
+*/
+
+/* Header for the main page (e.g., "Welcome Back...") */
+.page-header {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.page-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Grid layout for the summary
+  'auto-fit' makes it responsive: it will stack
+  on small screens and be 3-across on large ones.
+*/
+#dashboard-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Individual stat box styling */
+.stat-box {
+    background-color: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: var(--card-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+}
+
+.stat-box h3 {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.stat-box .stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    margin: 0;
+}
+
+
+/* Styling for the content sections */
+#my-projects,
+#collaboration-requests {
+    background-color: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: var(--card-radius);
+    margin-bottom: 1.5rem;
+}
+
+#my-projects h3,
+#collaboration-requests h3 {
+    margin-top: 0;
+}
+
+/* Styling the project list */
+#my-projects ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+#my-projects li {
+    background-color: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+#my-projects li strong {
+    color: var(--accent-primary); /* Highlight the project name */
+    font-weight: 600;
+}
+
+/* Style the buttons on this page to match the primary theme */
+#my-projects button,
+#collaboration-requests button {
+    background-color: var(--accent-primary);
+    color: var(--bg-primary);
+}
+
+#my-projects button:hover,
+#collaboration-requests button:hover {
+    filter: brightness(1.1);
+}
+/* REPLACE your old input[type="text"] rule with this one.
+  It adds 'input[type="number"]' and 'select'.
+*/
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--bg-hover);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none; /* Removes default browser styling */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* ADD this new rule to style the dropdown arrow 
+  for the <select> element in dark mode.
+*/
+select {
+   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+   background-repeat: no-repeat;
+   background-position: right 1rem center;
+   background-size: 1em;
+}
+
+/* REPLACE your old :focus rule with this one.
+  It adds 'input[type="number"]:focus' and 'select:focus'.
+*/
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+}
+/*
+  REPLACE your old input[...] rule in Section 6
+  with this final, more complete version.
+*/
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--bg-hover);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* REPLACE your old :focus rule in Section 6
+  with this final, more complete version.
+*/
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+}
+/*
+--- 10. Auth Page Styles (Register/Login) ---
+(Add this to the end of your existing styles.css)
+*/
+
+/* This targets the <body> tag ONLY when it has
+  the .auth-page class.
+*/
+body.auth-page {
+    /* We override the main app's dark background 
+     for a slightly different look on the auth pages.
+    */
+    background-color: var(--bg-primary);
+    display: grid;
+    place-items: center; /* This centers the .auth-container */
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+/* We must also override the margin-left that we
+  apply to <main> in the main app layout.
+*/
+body.auth-page main {
+    margin-left: 0;
+    padding: 0;
+}
+
+/* This is the white box */
+.auth-box {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: var(--card-radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.auth-box h2 {
+    text-align: center;
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+/* Style the form fields for the auth box */
+.auth-box label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.auth-box input,
+.auth-box select {
+    margin-bottom: 1.25rem;
+}
+
+.auth-box button[type="submit"] {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* Styles the "Already have an account? Log In" text 
+*/
+.auth-switch {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.auth-switch a {
+    font-weight: 600;
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+/*
+--- 11. My Projects Page Styles ---
+(Add this to the end of your existing styles.css)
+*/
+
+/* --- Utility Class --- */
+.mt-4 {
+    margin-top: 1.5rem; /* Simple margin-top utility */
+}
+
+/* --- Page Sections --- */
+#owned-projects h3,
+#collab-projects h3 {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* --- Main Management Card --- */
+.project-management-card {
+    background-color: var(--bg-card);
+    border-radius: var(--card-radius);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden; /* Ensures clean borders */
+}
+
+/* --- Card Sections --- */
+.card-details {
+    padding: 1.5rem;
+}
+
+.card-details h4 {
+    font-size: 1.25rem;
+    color: var(--accent-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.card-details p {
+    margin: 0.25rem 0;
+    color: var(--text-secondary);
+}
+
+.tech-stack {
+    font-size: 0.9rem;
+}
+.tech-stack strong {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Button action bar */
+.card-actions {
+    padding: 0 1.5rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+/* --- Sub-Sections (Invites & Team) --- */
+.invite-section,
+.team-status-section {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-top: 1px solid var(--bg-primary);
+}
+
+.invite-section h5,
+.team-status-section h5 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.invite-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.invite-section input[type="email"] {
+    flex-grow: 1; /* Makes input take available space */
+    margin: 0;
+}
+
+.team-status-section p {
+    margin: 0 0 1rem 0;
+    color: var(--text-secondary);
+}
+
+/* --- New Button Styles --- */
+button.tiny-btn {
+    border: none;
+    border-radius: 6px;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+}
+button.tiny-btn:hover {
+    filter: brightness(1.2);
+}
+
+/* Specific colors for new buttons */
+button.approve-btn {
+    background-color: #22c55e; /* Green */
+    color: var(--bg-primary);
+}
+button.decline-btn,
+button.leave-btn {
+    background-color: #ef4444; /* Red */
+    color: var(--text-primary);
+}
+
+/* Give "edit" and "view" a neutral color */
+button.edit-btn,
+button.view-btn {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+button.invite-btn {
+    background-color: var(--accent-primary);
+    color: var(--bg-primary);
+}

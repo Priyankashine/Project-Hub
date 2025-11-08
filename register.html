@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 Register | Project Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+    <main class="auth-container">
+        <div class="auth-box">
+            <h2>Join the Project Hub</h2>
+            <form id="register-form" action="#" method="POST">
+                
+                <label for="reg-role">I am a:</label>
+                <select id="reg-role" name="role" required>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                </select>
+                
+                <label for="reg-full-name">Full Name</label>
+                <input type="text" id="reg-full-name" name="full_name" required placeholder="John Smith">
+
+                <label for="reg-username">Username</label>
+                <input type="text" id="reg-username" name="username" required placeholder="jsmith24 (Unique ID)">
+
+                <label for="reg-email">College Email **</label>
+                <input type="email" id="reg-email" name="email" required placeholder="john.smith@college.edu">
+
+                <label for="reg-password">Create Password</label>
+                <input type="password" id="reg-password" name="password" required>
+
+                <label for="reg-confirm-password">Confirm Password</label>
+                <input type="password" id="reg-confirm-password" name="confirm_password" required>
+                
+                <label for="reg-suggested">Student ID / Department (Optional)</label>
+                <input type="text" id="reg-suggested" name="optional_detail" placeholder="C0012345 / Computer Science">
+
+                <button type="submit" class="primary-btn">Create Account</button>
+            </form>
+            <p class="auth-switch">Already have an account? <a href="login.html">Log In</a></p>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
